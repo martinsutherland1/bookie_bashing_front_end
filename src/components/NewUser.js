@@ -3,14 +3,16 @@ import React, { useState } from 'react'
 
 const Bet = ({handlePost}) => {
 
-
+  const [selectValue, setSelectValue] = useState();
 const [stateReview, setStateReview] = useState(
 {
   name:"",
   wins: 0,
   losses:0,
   winStreak:0,
-  bestStreak: 0
+  bestStreak: 0,
+  admin: selectValue,
+  password: ""
 
 })
 
@@ -38,12 +40,24 @@ return (
            <form onSubmit={handleSubmit}>
            <div>
            <label>Name</label>
-           
+          </div>
+           <div>
+           <input type="text" placeholder="" name="name" onChange={handleChange}  />
            </div>
            <div>
-           <input type="text" placeholder="" name="name" onChange={handleChange} value={stateReview.name} />
+           <label>Admin</label>
+          </div>
+           <div>
+           <select name="tables" onChange={handleChange} value={selectValue}>
+            <option value="" >Select value</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
+            
+</select>
            </div>
-           <br></br>
+           <div>
+             <input type="password" name="password" onChange={handleChange} />
+           </div>
         
               
             <div>

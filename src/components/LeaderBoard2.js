@@ -14,17 +14,9 @@ const Leaderboard2 = ({users}) => {
             </div>
                    
                  
-        )
+        )})
 
-        
-      
-    })
-
-  
-
-    
-
-    let res = users.sort(function(a,b){return b.losses - a.losses})
+   let res = users.sort(function(a,b){return b.losses - a.losses})
     console.log(`res`, res)
 
     
