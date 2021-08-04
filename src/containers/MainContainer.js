@@ -7,6 +7,8 @@ import NewUser from '../components/NewUser';
 import Leaderboard3 from '../components/LeaderBoard3';
 import Leaderboard4 from '../components/LeaderBoard4';
 import Login from '../components/Login';
+import Logo from '../components/Logo';
+import '../css/leaderboard.css';
 
 const MainContainer = () => {
     
@@ -46,6 +48,23 @@ const MainContainer = () => {
         requestAll()
       }, [])
 
+      useEffect(() => {
+        const data = localStorage.getItem("my-tier-list");
+        const data2 = localStorage.getItem("Auth");
+        if (data){
+          setCurrentUser(JSON.parse(data));
+          setAuth(JSON.parse(data2))
+        }
+      }, []);
+
+      useEffect(() => {
+        localStorage.setItem("my-tier-list", JSON.stringify(currentUser))
+      })
+
+      useEffect(() => {
+        localStorage.setItem("Auth", JSON.stringify(auth))
+      })
+
       
 
       const handleDelete = function(id){
@@ -70,17 +89,21 @@ const MainContainer = () => {
       if (selectValue === "winners" && auth === true && currentUser.admin === true){
         return(
   
-          <div>
-  <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+          <div >
+             <Logo />
+               <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
+       
             <Leaderboard users={users} />
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
@@ -93,16 +116,19 @@ const MainContainer = () => {
         return(
   
           <div>
-  <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+     <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard2 users={users} />
             
               <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
@@ -116,16 +142,19 @@ const MainContainer = () => {
         return(
   
           <div>
- <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+               <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard3 users={users} />
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
@@ -139,16 +168,19 @@ const MainContainer = () => {
         return(
   
           <div>
-  <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+    <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard4 users={users} />
             
               <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
@@ -162,16 +194,19 @@ const MainContainer = () => {
         return(
   
           <div>
-  <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+    <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard users={users} />
             
              
@@ -182,16 +217,19 @@ const MainContainer = () => {
         return(
   
           <div>
-  <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+   <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard2 users={users} />
             
               
@@ -203,16 +241,19 @@ const MainContainer = () => {
         return(
   
           <div>
- <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+    <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard3 users={users} />
             
              
@@ -224,16 +265,19 @@ const MainContainer = () => {
         return(
   
           <div>
-  <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-              <label for="cars">Leader Boards:</label>
+            <Logo />
+    <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
-  <select name="tables" onChange={handleChange} value={selectValue}>
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
               <option value="" >Select Leader Board</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
               <option value="streak">Best Streak</option>
   </select>
+        </div>
             <Leaderboard4 users={users} />
             
              
@@ -247,19 +291,23 @@ const MainContainer = () => {
 
       return(
 
-        <div>
-            <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-            <label for="cars">Leader Boards:</label>
-
-<select name="tables" onChange={handleChange} value={selectValue}>
-            <option value="" >Select Leader Board</option>
-            <option value="winners">Winners</option>
-            <option value="losers">Losers</option>
-            <option value="form">Form</option>
-            <option value="streak">Best Streak</option>
-</select>
+        
+      <div >
+        <Logo />
+     <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4><label className="l-board" for="cars">League Tables</label></h4> 
+  
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
+              <option value="" >Select Leader Board</option>
+              <option value="winners">Winners</option>
+              <option value="losers">Losers</option>
+              <option value="form">Form</option>
+              <option value="streak">Best Streak</option>
+  </select>
+        </div>
          
-            <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} auth={auth} setAuth={setAuth} handleUpdate={handleUpdate} handlePost={handlePost}/>
+            <BetList setCurrentUser={setCurrentUser} setAuth={setAuth} setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} auth={auth} setAuth={setAuth} handleUpdate={handleUpdate} handlePost={handlePost}/>
             {/* <NewUser handlePost={handlePost}/> */}
         </div>
       )
@@ -268,16 +316,19 @@ const MainContainer = () => {
       return(
 
         <div>
-            <h4>Hello, {currentUser.name}<button onClick={handLogOut}>Log out</button></h4>
-            <label for="cars">Leader Boards:</label>
-
-<select name="tables" onChange={handleChange} value={selectValue}>
-            <option value="" >Select Leader Board</option>
-            <option value="winners">Winners</option>
-            <option value="losers">Losers</option>
-            <option value="form">Form</option>
-            <option value="streak">Best Streak</option>
-</select>
+          <Logo />
+   <div className="leader-div">
+            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+       <h4><label className="l-board" for="cars">League Tables</label></h4>       
+  
+  <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
+              <option value="" >Select Leader Board</option>
+              <option value="winners">Winners</option>
+              <option value="losers">Losers</option>
+              <option value="form">Form</option>
+              <option value="streak">Best Streak</option>
+  </select>
+        </div>
          
             
         </div>
@@ -289,7 +340,13 @@ const MainContainer = () => {
      
      else {
        return (
-         <Login  users={users} auth={auth} setAuth={setAuth} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+
+        <div>
+          <Logo />
+<Login  users={users} auth={auth} setAuth={setAuth} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+        </div>
+         
+         
        )
      }  {
 

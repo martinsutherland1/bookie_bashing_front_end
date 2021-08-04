@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../css/leaderboard.css';
 import LeaderboardLosses from './LeaderboardLosses';
 
 const Leaderboard2 = ({users}) => {
@@ -22,11 +22,13 @@ const Leaderboard2 = ({users}) => {
     
     return(
 
-        <div>
-           <p>Most Losers</p>
-           <p>{leaderBoard}</p>
+        <div className="table">
+           <h4 className="header">Most Losses</h4>
+           <h4>{leaderBoard}</h4>
            
         </div>
+        
+     
         
     )
 

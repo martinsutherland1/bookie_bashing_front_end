@@ -1,11 +1,22 @@
 import React, { useState } from 'react'
 import Leaderboard from './Leaderboard'
+import '../css/stats.css';
+
+const Bet = ({handleUpdate, users, setCurrentUser, currentUser, setUpdateUser, updateUser, setAuth}) => {
 
 
-const Bet = ({handleUpdate, users, currentUser, setUpdateUser, updateUser}) => {
-
-
-  const [selectPlayer, setSelectPlayer] = useState();
+  const [selectPlayer, setSelectPlayer] = useState({
+    id:"",
+    name:"",
+    wins:"",
+    losses:"",
+    winStreak:"",
+    bestStreak: "",
+    admin: "",
+    password: ""
+  
+  
+  });
   const [user, setUser] = useState();
 
 
@@ -23,9 +34,21 @@ const [stateReview, setStateReview] = useState(
 
 })
 
-const findUser = function(selectPlayer, users){
+const handleSelect = (e) => {
+  // console.log(e)
+  // setSelectPlayer(e.currentTarget.value)
+  // setTimeout(function() { findUser(e.currentTarget.value, users); }, 5000);
+  findUser(e.currentTarget.value, users)
+  
+
+  
+  
+}
+
+const findUser = function(e, users){
+  console.log(`FindUser`, e)
   for (var i=0; i < users.length; i++) {
-      if (users[i].name === selectPlayer) {
+      if (users[i].name === e) {
           
           setStateReview({
             id:users[i].id,
@@ -39,6 +62,18 @@ const findUser = function(selectPlayer, users){
           
           
           })
+          setSelectPlayer({
+            id:users[i].id,
+            name:users[i].name,
+            wins:users[i].wins,
+            losses:users[i].losses,
+            winStreak:users[i].winStreak,
+            bestStreak: users[i].bestStreak,
+            admin: users[i].admin,
+            password: users[i].password
+          
+          
+          })
       }
   }
 }
@@ -46,10 +81,7 @@ const findUser = function(selectPlayer, users){
 
 
 
-const handleSelect = (e) => {
-  setSelectPlayer(e.currentTarget.value)
-  findUser(selectPlayer, users)
-}
+
 
 
 console.log(`selectPlayer`, selectPlayer)
@@ -69,9 +101,12 @@ const handleChange = function(event){
   
 }
 
-const handleSubmit = function(event){
+const handleSubmit = function(event, currentUser){
   event.preventDefault();
+
   handleUpdate(stateReview); 
+  setAuth(true)
+  setCurrentUser(currentUser)
   
   
 }
@@ -97,7 +132,9 @@ if (currentUser.id === null){
        
                <form onSubmit={handleSubmit}>
               
-               <div>
+               <div className="stats-form">
+
+                 
                <select name="users" onChange={handleSelect} value={selectPlayer}>
               <option value="" >Select Player</option>
               <option value="Jaz">Jaz</option>
@@ -105,32 +142,34 @@ if (currentUser.id === null){
               <option value="Del">Del</option>
               <option value="Stu">Stu</option>
               <option value="Martin">Martin</option>
-  </select>
+              </select>
                   
                 </div>
-                <p>{stateReview.name}</p>
+                <div className="stats-boxes">
+                <h4>{stateReview.name}</h4>
                 
-                <label>Wins</label>
+                <label>Wins {selectPlayer.wins}</label>
+                
                   <div>
                   <input type="number"  name="wins" onChange={handleChange}    />
                   </div>
                   <div>
                  
-                  <label>Losses</label>
+                  <label>Losses {selectPlayer.losses}</label>
                 </div>
                   <div>
                   <input type="number" placeholder="" name="losses" onChange={handleChange}   />
                   </div>
                   <div>
                  
-                 <label>Win Streak</label>
+                 <label>Win Streak {selectPlayer.winStreak}</label>
                </div>
                  <div>
                  <input type="number" placeholder="" name="winStreak" onChange={handleChange}  />
                  </div>
                  <div>
                  
-                 <label>Best Streak</label>
+                 <label>Best Streak {selectPlayer.bestStreak}</label>
                </div>
                  <div>
                  <input type="number"  name="bestStreak" onChange={handleChange}   />
@@ -138,13 +177,16 @@ if (currentUser.id === null){
                 
                   
                 <div>
+                  <br></br>
                 <button type="submit">Update</button>
                 </div>
                   
+                </div>
+                
                      
                   </form>
                </div>
-       
+       <br></br>
            </div>
     )
 }

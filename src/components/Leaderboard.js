@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LeaderboardWins from './LeaderboardWins';
 import LeaderboardLosses from './LeaderboardLosses';
+import '../css/leaderboard.css';
 
 const Leaderboard = ({users}) => {
 
@@ -25,14 +26,14 @@ const Leaderboard = ({users}) => {
     
 
     let res = users.sort(function(a,b){return b.wins - a.wins})
-    console.log(`res`, res)
+    
 
     
     return(
 
-        <div>
-           <p>Most Winners</p>
-           <p>{leaderBoard}</p>
+        <div className="table">
+           <h4 className="header">Most Winners</h4>
+           <h4>{leaderBoard}</h4>
            
         </div>
         

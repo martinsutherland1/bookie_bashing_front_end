@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LeaderboardBestStreak from './LeaderboardBestStreak';
-
+import '../css/leaderboard.css';
 
 
 
@@ -22,11 +22,11 @@ const Leaderboard4 = ({users}) => {
     
     return(
 
-        <div>
-           <p>Best Streak</p>
-           <p>{leaderBoard}</p>
-           
-        </div>
+        <div className="table">
+        <h4 className="header">Best Streak</h4>
+        <h4>{leaderBoard}</h4>
+        
+     </div>
         
     )
 

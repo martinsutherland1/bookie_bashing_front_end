@@ -14,8 +14,8 @@ const LeaderboardWinStreak = ({user, index}) => {
 
 
   return (
-      <div>
-          <p> {index +1} {user.name} {getChecks(user)} </p>
+      <div className="table-details">
+          <p > {index +1}. {user.name} {getChecks(user)} </p>
           
       </div>
   )

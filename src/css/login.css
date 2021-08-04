@@ -1,0 +1,65 @@
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   padding-top: 100px;
+  
+  
+  
+}
+
+
+.username-label {
+    padding-right: 6px;
+    color: whitesmoke;
+    font-size: larger;
+    
+}
+
+.username-box {
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    height: 28px;
+    width: 200px;
+    font-size: larger;
+}
+
+.password-box {
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    height: 28px;
+    width: 200px;
+    font-size: larger;
+}
+
+.password-label {
+    padding-right: 10px;
+    color: whitesmoke;
+    font-size: larger;
+}
+
+.login-btn {
+    background-color: gray;
+    color: whitesmoke;
+    font-size: larger;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    height: 28px;
+    width: 200px;
+    
+}
+
+.btn-div {
+    padding-left: 94px;
+}
+
+.wrong {
+    font-size: larger;
+    padding-left: 18px;
+    color: whitesmoke;
+}

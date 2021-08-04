@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LeaderboardWinStreak from './LeaderboardWinStreak';
+import '../css/leaderboard.css';
 
 
 
@@ -21,9 +22,9 @@ const Leaderboard3 = ({users}) => {
     
     return(
 
-        <div>
-           <p>Form</p>
-           <p>{leaderBoard}</p>
+        <div className="table">
+           <h4 className="header">Win Streak</h4>
+           <h4>{leaderBoard}</h4>
            
         </div>
         

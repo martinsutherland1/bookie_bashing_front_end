@@ -6,8 +6,9 @@ const LeaderboardWins = ({user, index}) => {
 
 
   return (
-      <div>
-          <p> {index +1} {user.name} {user.wins} </p>
+      <div className="table-details">
+          <p> {index +1}. {user.name} {user.wins}</p>
+          
           
       </div>
   )

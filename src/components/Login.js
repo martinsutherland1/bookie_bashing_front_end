@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Request from '../helpers/Request';
+import '../css/login.css'
 
 const Login = ({users, auth, setAuth, currentUser, setCurrentUser}) => {
 
@@ -61,27 +62,24 @@ const [stateLogin, setStateLogin] = useState(
   }
   return (
   
-    <form onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
           <div>
-          <label>Username:</label>
+          <label className="username-label">Username</label>
+          <input className="username-box" type="text" placeholder="" name="name" onChange={handleChange} value={stateLogin.username} />
+          </div>
           
-          </div>
-          <div>
-          <input id="username" type="text" placeholder="" name="name" onChange={handleChange} value={stateLogin.username} />
-          </div>
-          <br></br>
+        <br></br>
              <div>
   
-             <label>Password:</label>
+             <label className="password-label">Password</label>
+             <input className="password-box" type="password" placeholder="" name="password" onChange={handleChange} value={stateLogin.password}  />
            </div>
-             <div>
-             <input id="password" type="password" placeholder="" name="password" onChange={handleChange} value={stateLogin.password}  />
-             </div>
-            <div >
-           <button  type="submit">Login</button>
+             <br></br>
+            <div className="btn-div">
+           <button className="login-btn" type="submit">Login</button>
            <div>
              <br></br>
-           <label>{wrong}</label>
+           <label className="wrong">{wrong}</label>
            </div>
            
            </div>
