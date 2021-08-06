@@ -6,12 +6,17 @@
     background-color: gray;
     color: whitesmoke;
     width: 160px;
+    justify-content: center;
     
     
 }
 
 .table {
+ 
+    
     padding-left: 100px;
+    
+    
 }
 
 .header {

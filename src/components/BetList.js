@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Leaderboard from './Leaderboard'
 import '../css/stats.css';
 
-const Bet = ({handleUpdate, users, setCurrentUser, currentUser, setUpdateUser, updateUser, setAuth}) => {
+const Bet = ({handleUpdate, users, setCurrentUser, currentUser, setAuth}) => {
 
 
   const [selectPlayer, setSelectPlayer] = useState({
@@ -40,20 +40,21 @@ const handleSelect = (e) => {
   // setTimeout(function() { findUser(e.currentTarget.value, users); }, 5000);
   findUser(e.currentTarget.value, users)
   
+  
 
   
   
 }
 
 const findUser = function(e, users){
-  console.log(`FindUser`, e)
+  
   for (var i=0; i < users.length; i++) {
       if (users[i].name === e) {
           
           setStateReview({
             id:users[i].id,
             name:users[i].name,
-            wins:0,
+            wins: 0,
             losses:0,
             winStreak:0,
             bestStreak: 0,
@@ -78,24 +79,10 @@ const findUser = function(e, users){
   }
 }
 
-
-
-
-
-
-
-console.log(`selectPlayer`, selectPlayer)
-console.log(`state`, stateReview)
-
-
-
-
-
-const handleChange = function(event){
-  
+const handleChange = function(event, selectPlayer){
   let propertyName = event.target.name;
   let copiedReview = {...stateReview}
-  copiedReview[propertyName] = event.target.value;
+  copiedReview[propertyName] = event.target.value ;
   setStateReview(copiedReview)
   
   
@@ -103,10 +90,8 @@ const handleChange = function(event){
 
 const handleSubmit = function(event, currentUser){
   event.preventDefault();
-
   handleUpdate(stateReview); 
-  setAuth(true)
-  setCurrentUser(currentUser)
+  
   
   
 }

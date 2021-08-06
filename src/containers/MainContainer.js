@@ -9,9 +9,13 @@ import Leaderboard4 from '../components/LeaderBoard4';
 import Login from '../components/Login';
 import Logo from '../components/Logo';
 import '../css/leaderboard.css';
+import AddBet from '../components/AddBet';
+import AllBets from '../components/AllBets';
+
 
 const MainContainer = () => {
     
+    const [bets, setBets] = useState([]);
     const [users, setUsers] = useState([]);
     const [currentUser, setCurrentUser] = useState();
     const [auth, setAuth] = useState(false);
@@ -32,13 +36,15 @@ const MainContainer = () => {
     const requestAll = function(){
         const request = new Request();
         const usersPromise = request.get('/api/users')
+        const betsPromise = request.get('/api/bets')
        
 
         
       
-        Promise.all([usersPromise])
+        Promise.all([usersPromise, betsPromise])
         .then((data) => {
             setUsers(data[0]);
+            setBets(data[1])
             
             
         })
@@ -49,21 +55,23 @@ const MainContainer = () => {
       }, [])
 
       useEffect(() => {
-        const data = localStorage.getItem("my-tier-list");
+        const data = localStorage.getItem("current-user");
         const data2 = localStorage.getItem("Auth");
-        if (data){
+        if (data && data2){
           setCurrentUser(JSON.parse(data));
           setAuth(JSON.parse(data2))
         }
       }, []);
 
       useEffect(() => {
-        localStorage.setItem("my-tier-list", JSON.stringify(currentUser))
+        localStorage.setItem("current-user", JSON.stringify(currentUser))
       })
 
       useEffect(() => {
         localStorage.setItem("Auth", JSON.stringify(auth))
       })
+
+      
 
       
 
@@ -73,10 +81,23 @@ const MainContainer = () => {
         request.delete(url)
         .then(() => window.location = "/users")
       }
+
+      const handleDeleteBet = function(id){
+        const request = new Request();
+        const url = "/api/bets/" + id
+        request.delete(url)
+        .then(() => window.location = "/bets")
+      }
       
       const handlePost = function(user){
         const request = new Request();
          request.post("/api/users", user)
+        .then(() => window.location = '/')
+      }
+
+      const handlePostBet = function(bet){
+        const request = new Request();
+         request.post("/api/bets", bet)
         .then(() => window.location = '/')
       }
 
@@ -86,11 +107,20 @@ const MainContainer = () => {
         .then(() => window.location = '/')
       }
 
+      const handleUpdateBet = function(bet){
+        const request = new Request();
+        request.patch('/api/bets/' + bet.id, bet)
+        .then(() => window.location = '/')
+      }
+
+      console.log(`bets`, bets)
+
       if (selectValue === "winners" && auth === true && currentUser.admin === true){
         return(
   
           <div >
              <Logo />
+             
                <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -107,7 +137,8 @@ const MainContainer = () => {
             <Leaderboard users={users} />
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
-              
+              <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -117,12 +148,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
      <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -132,7 +164,8 @@ const MainContainer = () => {
             <Leaderboard2 users={users} />
             
               <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
-              
+              <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -143,12 +176,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
                <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -158,7 +192,8 @@ const MainContainer = () => {
             <Leaderboard3 users={users} />
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
-              
+              <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -169,12 +204,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -184,7 +220,8 @@ const MainContainer = () => {
             <Leaderboard4 users={users} />
             
               <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
-              
+              <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -195,12 +232,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -218,12 +256,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
    <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -242,12 +281,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -266,12 +306,13 @@ const MainContainer = () => {
   
           <div>
             <Logo />
+            
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -294,12 +335,13 @@ const MainContainer = () => {
         
       <div >
         <Logo />
+        
      <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -308,7 +350,8 @@ const MainContainer = () => {
         </div>
          
             <BetList setCurrentUser={setCurrentUser} setAuth={setAuth} setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} auth={auth} setAuth={setAuth} handleUpdate={handleUpdate} handlePost={handlePost}/>
-            {/* <NewUser handlePost={handlePost}/> */}
+            <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
         </div>
       )
 
@@ -317,12 +360,13 @@ const MainContainer = () => {
 
         <div>
           <Logo />
+          
    <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
        <h4><label className="l-board" for="cars">League Tables</label></h4>       
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>
@@ -330,7 +374,7 @@ const MainContainer = () => {
   </select>
         </div>
          
-            
+        
         </div>
       )
 
@@ -343,7 +387,7 @@ const MainContainer = () => {
 
         <div>
           <Logo />
-<Login  users={users} auth={auth} setAuth={setAuth} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+          <Login  users={users} auth={auth} setAuth={setAuth} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         </div>
          
          
