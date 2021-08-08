@@ -11,6 +11,7 @@ import Logo from '../components/Logo';
 import '../css/leaderboard.css';
 import AddBet from '../components/AddBet';
 import AllBets from '../components/AllBets';
+import SelectByWeek from '../components/SelectByWeek';
 
 
 const MainContainer = () => {
@@ -27,7 +28,7 @@ const MainContainer = () => {
       setAuth(true)
       setSelectValue(e.target.value)
     }
-    console.log(`selectValue`, selectValue)
+    
 
     const handLogOut = (e) => {
       setAuth(false)
@@ -73,7 +74,7 @@ const MainContainer = () => {
 
       
 
-      
+      console.log(`bets`, bets)
 
       const handleDelete = function(id){
         const request = new Request();
@@ -113,7 +114,7 @@ const MainContainer = () => {
         .then(() => window.location = '/')
       }
 
-      console.log(`bets`, bets)
+     
 
       if (selectValue === "winners" && auth === true && currentUser.admin === true){
         return(
@@ -189,7 +190,7 @@ const MainContainer = () => {
               <option value="streak">Best Streak</option>
   </select>
         </div>
-            <Leaderboard3 users={users} />
+            <Leaderboard3 users={users} bets={bets}/>
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
               <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
@@ -294,7 +295,7 @@ const MainContainer = () => {
               <option value="streak">Best Streak</option>
   </select>
         </div>
-            <Leaderboard3 users={users} />
+            <Leaderboard3 users={users} bets={bets} />
             
              
           </div>
@@ -351,7 +352,8 @@ const MainContainer = () => {
          
             <BetList setCurrentUser={setCurrentUser} setAuth={setAuth} setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} auth={auth} setAuth={setAuth} handleUpdate={handleUpdate} handlePost={handlePost}/>
             <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            {/* <SelectByWeek bets={bets} /> */}
         </div>
       )
 

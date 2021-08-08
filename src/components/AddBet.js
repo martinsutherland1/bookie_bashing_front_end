@@ -91,7 +91,7 @@ const AddBet = ({users, bets, handlePostBet, handleUpdateBet}) => {
             <div className="stats-boxes">
             <div className="stats-form">
               
-              <p>{selectPlayerBet.name}'s bet</p>
+              <h4>{selectPlayerBet.name}'s bet</h4>
               <select name="users" onChange={handleSelect} value={selectPlayerBet}>
            <option value="">Select Player</option>
            <option value="Jaz">Jaz</option>

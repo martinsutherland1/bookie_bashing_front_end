@@ -7,8 +7,27 @@
     color: whitesmoke;
     width: 160px;
     justify-content: center;
+    padding-right: 20px;
     
     
+}
+.table-details-bets {
+    
+    border: 1px solid whitesmoke;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    /* border-radius:10px; */
+    background-color: gray;
+    color: whitesmoke;
+    /* width:200px; */
+    justify-content: center;
+    /* padding-left: 40px; */
+    /* padding: 10px; */
+    text-align: center;
+}
+
+.table-bet {
+    padding-right: 80px;
+    padding-bottom: 20px;
 }
 
 .table {
@@ -42,4 +61,23 @@ button {
     background-color: gray;
     color: whitesmoke;
     font-size: large;
+}
+
+.week-no {
+    
+    text-align: center;
+}
+
+.crosses {
+    color: red;
+
+}
+
+.ticks {
+    color: lime;
+}
+
+.no-bets {
+    text-align: center;
+    color: whitesmoke;
 }

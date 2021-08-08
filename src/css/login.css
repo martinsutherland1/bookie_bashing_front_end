@@ -60,6 +60,6 @@
 
 .wrong {
     font-size: larger;
-    padding-left: 18px;
+    /* padding-left: 18px; */
     color: whitesmoke;
 }

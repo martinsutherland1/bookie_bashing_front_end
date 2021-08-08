@@ -4,13 +4,13 @@ import '../css/leaderboard.css';
 
 
 
-const Leaderboard3 = ({users}) => {
+const Leaderboard3 = ({users, bets}) => {
 
     const leaderBoard = users.map((user, index) => {
 
         return(
             <div>
-                <LeaderboardWinStreak user={user} index={index}/> 
+                <LeaderboardWinStreak user={user} index={index} bets={bets}/> 
             </div>
                    
                  

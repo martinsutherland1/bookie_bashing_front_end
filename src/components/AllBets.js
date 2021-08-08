@@ -1,17 +1,32 @@
 import { all } from 'q';
-import React from 'react';
+import React, {useState} from 'react';
 import AllBetsDetails from './AllBetsDetails';
 
-const AllBets = ({bets, handleUpdateBet}) => {
-
-
+const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
+    
+   
     
 
-    const allBetList = bets.map((bet, index) => {
+    if (bets.length === 0){
+        return (
+          <div className="no-bets">
+      <h4>**No bets to display**</h4>
+      
+          </div>
+          
+        )
+      }
+
+     
+    
+
+    const allBetList = bets.filter(bet => bet.week == 2)
+    
+    .map((bet, index) => {
 
             return(
-                <div>
-                    <AllBetsDetails bet={bet} index={index} handleUpdateBet={handleUpdateBet}/>
+                <div className="table">
+                    <AllBetsDetails bet={bet} index={index} handleUpdateBet={handleUpdateBet} handleDeleteBet={handleDeleteBet}/>
                     
                     
                 </div>
@@ -19,17 +34,20 @@ const AllBets = ({bets, handleUpdateBet}) => {
                      
             )})  
 
-    
+             
+
+            let res = bets.sort(function(a,b){return b.week - a.week})
 
     
 
-    console.log(`hello`, allBetList)
+ 
 
     return (
-        <div>
-            
+        <div className="table-bet">
+        
+            <br></br>
                 {allBetList}
-            
+                
         </div>
     )
 }

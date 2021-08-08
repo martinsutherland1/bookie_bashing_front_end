@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const AllBetsDetails = ({bet, index, handleUpdateBet}) => {
+const AllBetsDetails = ({bet, index, handleUpdateBet, handleDeleteBet}) => {
     const [result, setResult] = useState();
     const [stateBet, setStateBet] = useState(
         {
@@ -16,8 +16,7 @@ const AllBetsDetails = ({bet, index, handleUpdateBet}) => {
         
         })
 
-        console.log(`stateBet`, stateBet)
-        console.log(`result`, result)
+        
 
         // const handleResultValue = (e) => {
         //     console.log(`e`, e)
@@ -51,25 +50,63 @@ const AllBetsDetails = ({bet, index, handleUpdateBet}) => {
         }
         return plugs;
     }
+
+    const handleDelete = () => {
+        handleDeleteBet(bet.id)
+        }
+
+        if (bet.result === 0){
+
+            return(
+
+                <div className="table-details-bets">
+                    <h4 className="week-no">Week:{bet.week}</h4>
+                    <h4>{bet.user.name} - {bet.selection}</h4>
+                    <h4 className="crosses"> {getPlugs(bet)}</h4>
+        
+                      <div>
+                          
+                      
+                      
+                      <select name="bets" onChange={handleResult} value={result}>
+                   <option value="">Update</option>
+                   <option value="1">Winner</option>
+                   
+                   
+                   </select>
+                   <button type="submit" className="delete" onClick={handleDelete} onTouchEnd={handleDelete}>Delete</button>
+                    </div>
+                    
+                </div>
+            )
+
+        } else if (bet.result === 1){
+            return(
+
+                <div className="table-details-bets">
+                    <h4 className="week-no">Week:{bet.week}</h4>
+                    <h4>{bet.user.name} - {bet.selection}</h4>
+                    <h4 className="ticks"> {getPlugs(bet)}</h4>
+        
+                      <div>
+                          
+                      
+                      
+                      <select name="bets" onChange={handleResult} value={result}>
+                   <option value="">Update</option>
+                   <option value="1">Winner</option>
+                   
+                   
+                   </select>
+                   <button type="submit" className="delete" onClick={handleDelete} onTouchEnd={handleDelete}>Delete</button>
+                    </div>
+                    
+                </div>
+            )
+        }
       
 
-    return(
-
-        <div>
-            <p>{bet.user.name} {bet.selection} {getPlugs(bet)}</p>
-
-              <div>
-              
-              <label>Result</label>
-              <select name="bets" onChange={handleResult} value={result}>
-           <option value="">Update</option>
-           <option value="1">Winner</option>
-           
-           
-           </select>
-            </div>
-        </div>
-    )
+   
   
 }
 

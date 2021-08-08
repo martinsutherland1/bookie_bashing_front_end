@@ -27,7 +27,7 @@ const handleChange = function(event){
 const handleSubmit = function(event){
   event.preventDefault();
   handlePost(stateReview); 
-  console.log(`StateReview`, stateReview)
+  
   
 }
 
