@@ -55,6 +55,8 @@ const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
                 return (
                     
                   <div className="leader-div">
+                              <br></br>
+           
                       <select className="week-drop"name="tables" onChange={handleChange} value={selectWeek}>
                     <option value="" >Select Week</option>
                     <option value="4">Week 4</option>
@@ -62,7 +64,10 @@ const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
                     <option value="2">Week 2</option>
                     <option value="1">Week 1</option>
                   </select>
-
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
                   </div>       
             
                     
@@ -72,10 +77,12 @@ const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
                 return (
 
                   <div>
-                    <br></br>
+                    
                     
                      <div className="leader-div">
                      <h3>View bets</h3>
+                     
+                  
                       <select className="week-drop"name="tables" onChange={handleChange} value={selectWeek}>
                     <option value="" >Select Week</option>
                     <option value="4">Week 4</option>
@@ -83,7 +90,7 @@ const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
                     <option value="2">Week 2</option>
                     <option value="1">Week 1</option>
                   </select>
-
+                  
                   </div>
                   <br></br>
                     <div className="table-bet">

@@ -1,35 +1,38 @@
 class Request {
-    get(url) {
-        return fetch(url)
-        .then((res) => res.json());
+
+    constructor(){
+      this.baseUrl = "https://bookie-bashing-back-end.herokuapp.com" // added
     }
+  
+    get(url) {
+      return fetch(this.baseUrl + url)	//modified
+      .then((res) => res.json());
+    }
+
     delete(url) {
-        return fetch(url, {
+      return fetch(this.baseUrl + url, {	//modified
         method: "DELETE",
         headers: {'Content-Type': 'application/json'}
-        })
+      })
     }
+
     post(url, payload){
-        return fetch(url, {
+      return fetch(this.baseUrl + url, {	//modified
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
-        })
+        
+      })
     }
+
     patch(url, payload){
-        return fetch(url, {
+      return fetch(this.baseUrl + url, {	//modified
         method: "PATCH",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
-        })
+      })
     }
 
-    put(url, payload) {
-        return fetch(url, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-      }
-    }
-    export default Request;
+}
+
+export default Request;

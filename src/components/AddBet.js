@@ -101,6 +101,7 @@ const AddBet = ({users, bets, handlePostBet, handleUpdateBet}) => {
            <option value="Stu">Stu</option>
            <option value="Martin">Martin</option>
            </select>
+           
             </div>
              
              <label>Selection</label>
