@@ -56,8 +56,8 @@ console.log(`stateBet`, stateBet)
             return(
 
                 <div className="table-details-bets">
-                    <h4 className="week-no">Week:{bet.week}</h4>
-                    <h4>{bet.user.name} - {bet.selection}</h4>
+                    <p className="week-no">Week:{bet.week} - {bet.user.name}</p>
+                    <p>{bet.selection}</p>
                     <h4 className="crosses"> {getPlugs(bet)}</h4>
         
                       <div>
@@ -81,8 +81,8 @@ console.log(`stateBet`, stateBet)
             return(
 
                 <div className="table-details-bets">
-                    <h4 className="week-no">Week:{bet.week}</h4>
-                    <h4>{bet.user.name} - {bet.selection}</h4>
+                    <p className="week-no">Week:{bet.week} - {bet.user.name}</p>
+                    <p>{bet.selection}</p>
                     <h4 className="ticks"> {getPlugs(bet)}</h4>
         
                       <div>
