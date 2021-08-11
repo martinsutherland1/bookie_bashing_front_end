@@ -8,25 +8,25 @@ if (winning.runningTotal > 0){
         return (
             <div className="green-winnings">
             <h2>Winnings</h2>
-            <h3>£{winning.runningTotal}</h3>
+            <h3 className="green-winnings">£{winning.runningTotal}</h3>
             </div>
         )
 
       } else if (winning.runningTotal < 0){
 
         return (
-            <div className="red-winnings">
+            <div >
             <h2>Winnings</h2>
-            <h3>£{winning.runningTotal}</h3>
+            <h3 className="red-winnings">£{winning.runningTotal}</h3>
             </div>
         )
      
       } else {
 
         return (
-            <div className="zero-winnings">
+            <div >
             <h2>Winnings</h2>
-            <h3>£{winning.runningTotal}</h3>
+            <h3 className="zero-winnings">£{winning.runningTotal}</h3>
             </div>
         )}
 
