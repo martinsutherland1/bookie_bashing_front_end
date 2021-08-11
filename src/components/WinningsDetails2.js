@@ -6,7 +6,7 @@ const WinningsDetails2 = ({winning}) => {
 if (winning.runningTotal > 0){
 
         return (
-            <div className="zero-winnings">
+            <div className="green-winnings">
             <h2>Winnings</h2>
             <h3>£{winning.runningTotal}</h3>
             </div>
@@ -15,7 +15,7 @@ if (winning.runningTotal > 0){
       } else if (winning.runningTotal < 0){
 
         return (
-            <div className="zero-winnings">
+            <div className="red-winnings">
             <h2>Winnings</h2>
             <h3>£{winning.runningTotal}</h3>
             </div>
