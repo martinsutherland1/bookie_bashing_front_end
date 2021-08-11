@@ -260,7 +260,8 @@ const MainContainer = () => {
   </select>
         </div>
             <Leaderboard users={users} />
-            
+            <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
              
           </div>
         )
@@ -284,7 +285,8 @@ const MainContainer = () => {
   </select>
         </div>
             <Leaderboard2 users={users} />
-            
+            <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
               
           </div>
         )
@@ -309,7 +311,8 @@ const MainContainer = () => {
   </select>
         </div>
             <Leaderboard3 users={users} bets={bets} />
-            
+            <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
              
           </div>
         )
@@ -334,7 +337,8 @@ const MainContainer = () => {
   </select>
         </div>
             <Leaderboard4 users={users} />
-            
+            <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
              
           </div>
         )
@@ -376,6 +380,7 @@ const MainContainer = () => {
         <div>
           <Logo />
           <Winnings2 winnings={winnings}/>
+          
    <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
        <h4><label className="l-board" for="cars">League Tables</label></h4>       
@@ -388,7 +393,8 @@ const MainContainer = () => {
               <option value="streak">Best Streak</option>
   </select>
         </div>
-         
+        <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
+            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
         
         </div>
       )
