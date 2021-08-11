@@ -4,6 +4,8 @@ import LeaderboardLosses from './LeaderboardLosses';
 
 const Leaderboard2 = ({users}) => {
 
+    let res = users.sort(function(a,b){return b.losses - a.losses})
+
     const leaderBoard = users.map((user, index) => {
 
         return(
@@ -16,7 +18,7 @@ const Leaderboard2 = ({users}) => {
                  
         )})
 
-   let res = users.sort(function(a,b){return b.losses - a.losses})
+   
     
 
     

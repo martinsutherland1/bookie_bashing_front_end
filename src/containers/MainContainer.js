@@ -55,6 +55,10 @@ const MainContainer = () => {
             
         })
       }
+
+      useEffect(() => {
+        let res = users.sort(function(a,b){return b.winStreak - a.winStreak})
+      })
       
       useEffect(()=>{
         requestAll()

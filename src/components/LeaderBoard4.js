@@ -6,6 +6,8 @@ import '../css/leaderboard.css';
 
 const Leaderboard4 = ({users}) => {
 
+    let res = users.sort(function(a,b){return b.winStreak - a.winStreak})
+
     const leaderBoard = users.map((user, index) => {
 
         return(
@@ -16,7 +18,7 @@ const Leaderboard4 = ({users}) => {
                  
         )})
 
-   let res = users.sort(function(a,b){return b.winStreak - a.winStreak})
+   
     
 
     

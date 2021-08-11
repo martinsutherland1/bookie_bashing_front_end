@@ -5,6 +5,8 @@ import '../css/leaderboard.css';
 
 const Leaderboard = ({users}) => {
 
+    let res = users.sort(function(a,b){return b.wins - a.wins})
+
     const leaderBoard = users.map((user, index) => {
 
         return(
@@ -25,7 +27,7 @@ const Leaderboard = ({users}) => {
 
     
 
-    let res = users.sort(function(a,b){return b.wins - a.wins})
+    
     
 
     
