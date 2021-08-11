@@ -12,11 +12,14 @@ import '../css/leaderboard.css';
 import AddBet from '../components/AddBet';
 import AllBets from '../components/AllBets';
 import SelectByWeek from '../components/SelectByWeek';
+import Winnings from '../components/Winnings';
+import Winnings2 from '../components/Winnings2';
 
 
 const MainContainer = () => {
     
     const [bets, setBets] = useState([]);
+    const [winnings, setWinnings] = useState([]);
     const [users, setUsers] = useState([]);
     const [currentUser, setCurrentUser] = useState();
     const [auth, setAuth] = useState(false);
@@ -38,14 +41,16 @@ const MainContainer = () => {
         const request = new Request();
         const usersPromise = request.get('/api/users')
         const betsPromise = request.get('/api/bets')
+        const winningsPromise = request.get('/api/winnings')
        
 
         
       
-        Promise.all([usersPromise, betsPromise])
+        Promise.all([usersPromise, betsPromise, winningsPromise])
         .then((data) => {
             setUsers(data[0]);
-            setBets(data[1])
+            setBets(data[1]);
+            setWinnings(data[2]);
             
             
         })
@@ -73,8 +78,6 @@ const MainContainer = () => {
       })
 
       
-
-      console.log(`bets`, bets)
 
       const handleDelete = function(id){
         const request = new Request();
@@ -114,6 +117,12 @@ const MainContainer = () => {
         .then(() => window.location = '/')
       }
 
+      const handleUpdateWinnings = function(winning){
+        const request = new Request();
+        request.patch('/api/winnings/' + winning.id, winning)
+        .then(() => window.location = '/')
+      }
+
      
 
       if (selectValue === "winners" && auth === true && currentUser.admin === true){
@@ -121,7 +130,7 @@ const MainContainer = () => {
   
           <div >
              <Logo />
-             
+             <Winnings winnings={winnings} handleUpdateWinnings={handleUpdateWinnings}  />
                <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -149,7 +158,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings winnings={winnings} handleUpdateWinnings={handleUpdateWinnings}  />
      <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -177,7 +186,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings winnings={winnings} handleUpdateWinnings={handleUpdateWinnings}  />
                <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -205,7 +214,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings winnings={winnings} handleUpdateWinnings={handleUpdateWinnings}  />
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -233,7 +242,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings2 winnings={winnings}/>
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -257,7 +266,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings2 winnings={winnings}/>
    <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -282,7 +291,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings2 winnings={winnings}/>
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -307,7 +316,7 @@ const MainContainer = () => {
   
           <div>
             <Logo />
-            
+            <Winnings2 winnings={winnings}/>
     <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -336,7 +345,7 @@ const MainContainer = () => {
         
       <div >
         <Logo />
-        
+        <Winnings winnings={winnings} handleUpdateWinnings={handleUpdateWinnings}/>
      <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
@@ -362,7 +371,7 @@ const MainContainer = () => {
 
         <div>
           <Logo />
-          
+          <Winnings2 winnings={winnings}/>
    <div className="leader-div">
             <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
        <h4><label className="l-board" for="cars">League Tables</label></h4>       

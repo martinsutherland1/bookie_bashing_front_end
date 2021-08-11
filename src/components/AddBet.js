@@ -69,6 +69,7 @@ const AddBet = ({users, bets, handlePostBet, handleUpdateBet}) => {
             let propertyName = event.target.name;
             let copiedBet = {...stateBet}
             copiedBet[propertyName] = event.target.value;
+            
             setStateBet(copiedBet)
             
             

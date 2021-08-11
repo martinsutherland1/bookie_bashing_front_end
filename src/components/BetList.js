@@ -17,7 +17,7 @@ const Bet = ({handleUpdate, users, setCurrentUser, currentUser, setAuth}) => {
   
   
   });
-  const [user, setUser] = useState();
+  
 
 
 const [stateReview, setStateReview] = useState(

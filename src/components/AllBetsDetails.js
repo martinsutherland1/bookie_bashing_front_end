@@ -18,28 +18,24 @@ const AllBetsDetails = ({bet, index, handleUpdateBet, handleDeleteBet}) => {
 
         
 
-        // const handleResultValue = (e) => {
-        //     console.log(`e`, e)
-        //     if (e === 0){
-        //         setResult(0)
-        //     }else if (e === 1){
-        //         setResult(1)
-        //     }
-          
-        // }
+        
 
     const handleResult = function(event){
         
         let propertyName = event.target.name;
-        
-        let copiedBet = {...stateBet}
-        copiedBet[propertyName] = event.target.value;
-        console.log(copiedBet[propertyName])
-        setStateBet(copiedBet)
+        let copiedReview = {...stateBet}
+        copiedReview[propertyName] = event.target.value ;
+        setStateBet(copiedReview)
         handleUpdateBet(stateBet); 
         
         
       }
+
+      
+
+
+        
+console.log(`stateBet`, stateBet)
 
       function getPlugs(bet){
         let plugs = [];
@@ -72,8 +68,9 @@ const AllBetsDetails = ({bet, index, handleUpdateBet, handleDeleteBet}) => {
                    <option value="">Update</option>
                    <option value="1">Winner</option>
                    
-                   
                    </select>
+                   
+
                    <button type="submit" className="delete" onClick={handleDelete} onTouchEnd={handleDelete}>Delete</button>
                     </div>
                     

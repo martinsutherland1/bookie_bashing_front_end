@@ -33,7 +33,7 @@
 .table {
  
     
-    padding-left: 100px;
+    padding-left: 130px;
     
     
 }
@@ -80,4 +80,25 @@ button {
 .no-bets {
     text-align: center;
     color: whitesmoke;
+}
+
+.week-drop {
+    align-items: center;
+}
+
+.winnings {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.table-bet > .leader-div {
+    text-align:center;
+}
+
+.green-winnings {
+    color: green;
+}
+
+.red-winnings {
+    color: red;
 }
