@@ -152,7 +152,7 @@ const MainContainer = () => {
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
               <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
+              <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -179,7 +179,7 @@ const MainContainer = () => {
             
               <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
               <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
+              <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -207,7 +207,7 @@ const MainContainer = () => {
             
               <BetList setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
               <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
+              <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -235,7 +235,7 @@ const MainContainer = () => {
             
               <BetList  setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} handleUpdate={handleUpdate} handlePost={handlePost}/>
               <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-              <AllBets handleUpdateBet={handleUpdateBet} bets={bets} />
+              <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} />
               {/* <NewUser handlePost={handlePost}/> */}
           </div>
         )
@@ -261,7 +261,7 @@ const MainContainer = () => {
         </div>
             <Leaderboard users={users} />
             <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
              
           </div>
         )
@@ -286,7 +286,7 @@ const MainContainer = () => {
         </div>
             <Leaderboard2 users={users} />
             <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
               
           </div>
         )
@@ -312,7 +312,7 @@ const MainContainer = () => {
         </div>
             <Leaderboard3 users={users} bets={bets} />
             <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
              
           </div>
         )
@@ -338,7 +338,7 @@ const MainContainer = () => {
         </div>
             <Leaderboard4 users={users} />
             <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
              
           </div>
         )
@@ -369,7 +369,7 @@ const MainContainer = () => {
          
             <BetList setCurrentUser={setCurrentUser} setAuth={setAuth} setUpdateUser={setUpdateUser} updateUser={updateUser} currentUser={currentUser} users={users} auth={auth} setAuth={setAuth} handleUpdate={handleUpdate} handlePost={handlePost}/>
             <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
             {/* <SelectByWeek bets={bets} /> */}
         </div>
       )
@@ -394,7 +394,7 @@ const MainContainer = () => {
   </select>
         </div>
         <AddBet users={users} handlePostBet={handlePostBet} handleUpdateBet={handleUpdateBet}/>
-            <AllBets handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
+            <AllBets currentUser={currentUser} handleUpdateBet={handleUpdateBet} bets={bets} handleDeleteBet={handleDeleteBet} />
         
         </div>
       )

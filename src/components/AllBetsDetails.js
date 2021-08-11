@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const AllBetsDetails = ({bet, index, handleUpdateBet, handleDeleteBet}) => {
+const AllBetsDetails = ({bet, index, handleUpdateBet, handleDeleteBet, currentUser}) => {
     const [result, setResult] = useState();
     const [stateBet, setStateBet] = useState(
         {
@@ -35,7 +35,7 @@ const AllBetsDetails = ({bet, index, handleUpdateBet, handleDeleteBet}) => {
 
 
         
-console.log(`stateBet`, stateBet)
+
 
       function getPlugs(bet){
         let plugs = [];
@@ -51,7 +51,7 @@ console.log(`stateBet`, stateBet)
         handleDeleteBet(bet.id)
         }
 
-        if (bet.result === 0){
+        if (bet.result === 0 && currentUser.admin === true){
 
             return(
 
@@ -77,7 +77,7 @@ console.log(`stateBet`, stateBet)
                 </div>
             )
 
-        } else if (bet.result === 1){
+        } else if (bet.result === 1 && currentUser.admin === true){
             return(
 
                 <div className="table-details-bets">
@@ -98,6 +98,29 @@ console.log(`stateBet`, stateBet)
                    <button type="submit" className="delete" onClick={handleDelete} onTouchEnd={handleDelete}>Delete</button>
                     </div>
                     
+                </div>
+            )
+        }
+
+        if (bet.result === 0 && currentUser.admin === false){
+
+            return(
+
+                <div className="table-details-bets">
+                    <p className="week-no">Week:{bet.week} - {bet.user.name}</p>
+                    <p>{bet.selection}</p>
+                    <h4 className="crosses"> {getPlugs(bet)}</h4>
+                </div>
+                    
+            )
+
+        } else if (bet.result === 1 && currentUser.admin === false){
+            return(
+
+                <div className="table-details-bets">
+                    <p className="week-no">Week:{bet.week} - {bet.user.name}</p>
+                    <p>{bet.selection}</p>
+                    <h4 className="ticks"> {getPlugs(bet)}</h4>
                 </div>
             )
         }

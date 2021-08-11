@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import AllBetsDetails from './AllBetsDetails';
 import '../css/leaderboard.css'
 
-const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
+const AllBets = ({bets, handleUpdateBet, handleDeleteBet, currentUser}) => {
 
     const [selectWeek, setSeelectWeek] = useState();
 
@@ -39,7 +39,7 @@ const AllBets = ({bets, handleUpdateBet, handleDeleteBet}) => {
 
             return(
                 <div className="table">
-                    <AllBetsDetails bet={bet} index={index} handleUpdateBet={handleUpdateBet} handleDeleteBet={handleDeleteBet}/>
+                    <AllBetsDetails bet={bet} index={index} handleUpdateBet={handleUpdateBet} handleDeleteBet={handleDeleteBet} currentUser={currentUser}/>
                     
                     
                 </div>
