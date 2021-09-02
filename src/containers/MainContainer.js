@@ -64,6 +64,8 @@ const MainContainer = () => {
         requestAll()
       }, [])
 
+      console.table(bets)
+
       useEffect(() => {
         const data = localStorage.getItem("current-user");
         const data2 = localStorage.getItem("Auth");
@@ -355,7 +357,7 @@ const MainContainer = () => {
         <Logo />
         <Winnings winnings={winnings} handleUpdateWinnings={handleUpdateWinnings}/>
      <div className="leader-div">
-            <h4 className="hello">Hello, {currentUser.name}  <button onClick={handLogOut}>Log out</button></h4>
+            <h4 className="hello">Hello, {currentUser.name}  <button className="log-out" onClick={handLogOut}>Log out</button></h4>
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>

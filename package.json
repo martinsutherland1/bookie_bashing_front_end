@@ -40,5 +40,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://bookie-bashing-back-end.herokuapp.com"
+  "proxy": "https://bookie-bashing-back-end.herokuapp.com",
+  "devDependencies": {
+    "cypress": "^8.3.1"
+  }
 }
