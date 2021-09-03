@@ -142,7 +142,7 @@ const MainContainer = () => {
             <h4><label className="l-board" for="cars">League Tables</label></h4> 
   
   <select className="leader-drop"name="tables" onChange={handleChange} value={selectValue}>
-              <option value="" >Select Leader Board</option>
+              <option value="" >Select Table</option>
               <option value="winners">Winners</option>
               <option value="losers">Losers</option>
               <option value="form">Form</option>

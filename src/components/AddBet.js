@@ -93,7 +93,7 @@ const AddBet = ({users, bets, handlePostBet, handleUpdateBet}) => {
             <div className="stats-form">
               
               <h4>{selectPlayerBet.name}'s bet</h4>
-              <select name="users" onChange={handleSelect} value={selectPlayerBet}>
+              <select className="add-bet-drop" name="users" onChange={handleSelect} value={selectPlayerBet}>
            <option value="">Select Player</option>
            <option value="Jaz">Jaz</option>
            <option value="Wullie">Wullie</option>
@@ -107,14 +107,14 @@ const AddBet = ({users, bets, handlePostBet, handleUpdateBet}) => {
              <label>Selection</label>
              
                <div>
-               <input type="text"  name="selection" onChange={handleChange}    />
+               <input type="text" className="selection" name="selection" onChange={handleChange}    />
                </div>
                <div>
               
                <label>Week</label>
              </div>
                <div>
-               <input type="number" placeholder="" name="week" onChange={handleChange}   />
+               <input type="number" className="week"  placeholder="" name="week" onChange={handleChange}   />
                </div>
             
               

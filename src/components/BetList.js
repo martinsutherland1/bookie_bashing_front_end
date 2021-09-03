@@ -120,7 +120,7 @@ if (currentUser.id === null){
                <div className="stats-form">
 
                  
-               <select name="users" onChange={handleSelect} value={selectPlayer}>
+               <select className="users" name="users" onChange={handleSelect} value={selectPlayer}>
               <option value="" >Select Player</option>
               <option value="Jaz">Jaz</option>
               <option value="Wullie">Wullie</option>
@@ -136,34 +136,34 @@ if (currentUser.id === null){
                 <label>Wins {selectPlayer.wins}</label>
                 
                   <div>
-                  <input type="number"  name="wins" onChange={handleChange}    />
+                  <input type="number" className="wins" name="wins" onChange={handleChange}    />
                   </div>
                   <div>
                  
                   <label>Losses {selectPlayer.losses}</label>
                 </div>
                   <div>
-                  <input type="number" placeholder="" name="losses" onChange={handleChange}   />
+                  <input type="number" className="losses" placeholder="" name="losses" onChange={handleChange}   />
                   </div>
                   <div>
                  
                  <label>Win Streak {selectPlayer.winStreak}</label>
                </div>
                  <div>
-                 <input type="number" placeholder="" name="winStreak" onChange={handleChange}  />
+                 <input type="number" className="winStreak" placeholder="" name="winStreak" onChange={handleChange}  />
                  </div>
                  <div>
                  
                  <label>Best Streak {selectPlayer.bestStreak}</label>
                </div>
                  <div>
-                 <input type="number"  name="bestStreak" onChange={handleChange}   />
+                 <input type="number" className="bestStreak" name="bestStreak" onChange={handleChange}   />
                  </div>
                 
                   
                 <div>
                   <br></br>
-                <button type="submit">Update</button>
+                <button type="submit">Update Scores</button>
                 </div>
                   
                 </div>
