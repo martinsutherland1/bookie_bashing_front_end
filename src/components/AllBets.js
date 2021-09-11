@@ -59,6 +59,7 @@ const AllBets = ({bets, handleUpdateBet, handleDeleteBet, currentUser}) => {
            
                       <select className="week-drop"name="tables" onChange={handleChange} value={selectWeek}>
                     <option value="" >Select Week</option>
+                    <option value="7">Week 7</option>
                     <option value="6">Week 6</option>
                     <option value="5">Week 5</option>
                     <option value="4">Week 4</option>
